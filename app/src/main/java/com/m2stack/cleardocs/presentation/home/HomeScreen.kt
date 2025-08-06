@@ -4,18 +4,12 @@ import android.app.Activity
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Description
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,6 +22,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.m2stack.cleardocs.presentation.navigation.BottomNavBar
 import com.m2stack.cleardocs.presentation.navigation.Screen
+import com.m2stack.cleardocs.presentation.theme.ClearDocsBlue
+import com.m2stack.cleardocs.presentation.theme.ClearDocsLightGray
+import com.m2stack.cleardocs.presentation.theme.ClearDocsTextOnPrimary
+import com.m2stack.cleardocs.presentation.theme.ClearDocsTextPrimary
 import com.m2stack.cleardocs.scanner.ScannerResultHandler.handleScannerResult
 import com.m2stack.cleardocs.scanner.ScannerLauncher.launchScanner
 
@@ -58,7 +56,7 @@ fun HomeScreen(
         ) {
             Text(
                 text = "ClearDocs",
-                fontSize = 24.sp,
+                fontSize = 32.sp,
                 fontWeight = FontWeight.SemiBold
             )
 
@@ -72,13 +70,24 @@ fun HomeScreen(
                         Toast.makeText(context, "Activity not available", Toast.LENGTH_SHORT).show()
                     }
                 },
-                modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB0CBEF)),
-                shape = RoundedCornerShape(50)
+                modifier = Modifier
+                    .fillMaxWidth(0.6f)
+                    .height(50.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = ClearDocsBlue),
+                shape = RoundedCornerShape(32.dp),
+                elevation = ButtonDefaults.buttonElevation(defaultElevation = 4.dp)
             ) {
+                Icon(
+                    imageVector = Icons.Default.Description,
+                    contentDescription = "Scan Icon",
+                    tint = Color.White,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "Scan New Document",
-                    fontWeight = FontWeight.Bold
+                    text = "Scan Doc",
+                    fontWeight = FontWeight.Bold,
+                    color = ClearDocsTextOnPrimary
                 )
             }
 
@@ -86,14 +95,24 @@ fun HomeScreen(
 
             Button(
                 onClick = { navController.navigate(Screen.ScannedList.route) },
-                modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEFEFF1)),
-                shape = RoundedCornerShape(50)
+                modifier = Modifier
+                    .fillMaxWidth(0.6f)
+                    .height(50.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = ClearDocsLightGray),
+                shape = RoundedCornerShape(32.dp),
+                elevation = ButtonDefaults.buttonElevation(defaultElevation = 2.dp)
             ) {
+                Icon(
+                    imageVector = Icons.Default.History,
+                    contentDescription = "Recent Scans Icon",
+                    tint = Color.Black,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "Recent Scans",
                     fontWeight = FontWeight.Bold,
-                    color = Color.Black
+                    color = ClearDocsTextPrimary
                 )
             }
         }

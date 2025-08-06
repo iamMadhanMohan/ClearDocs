@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "454268347815",
+    "project_id": "cleardocs-m2stack",
+    "storage_bucket": "cleardocs-m2stack.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454268347815:android:23332d85a82f98968f8282",
+        "android_client_info": {
+          "package_name": "com.m2stack.cleardocs"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-uodroqxgXz2Bz4S4IaeLjYRjPJr2fJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
